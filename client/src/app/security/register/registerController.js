@@ -10,6 +10,8 @@ angular.module('todoApp.security')
 		security.register($scope.user)
 		.success(function(data){
 			$state.go('welcome.login');
+		}).error(function(data){
+
 		}); 
 	};
 }])
@@ -40,4 +42,22 @@ angular.module('todoApp.security')
 			});
 		}
 	}
-}]);
+}])
+.directive('ensureMatch', function() {
+	return {
+		restrict: 'A',
+		require: 'ngModel',
+		scope: {
+			password: "=ensureMatch"
+		},
+		link: function(scope, element, attrs, ngModel) {
+			ngModel.$validators.match = function(modelValue) {
+				return modelValue == scope.password
+			};
+
+			scope.$watch("password", function(){
+				ngModel.$validate();
+			})
+		}
+	}
+});

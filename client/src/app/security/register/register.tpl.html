@@ -115,12 +115,16 @@
                     <div class="input-group">
                         <div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
                         <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" ng-model="confirmPassword" 
-                        placeholder="Retype Password" required>
+                        placeholder="Retype Password" ensure-match="user.password" required>
                     </div>
                     <div class="error-container" ng-show="registerForm.confirmPassword.$dirty && registerForm.confirmPassword.$invalid">
                             <span class="error" ng-show="registerForm.confirmPassword.$error.required">
                                 Please confirm password 
                             </span>
+                          <span class="error" ng-show="registerForm.confirmPassword.$error.match">
+                                Passwords do not match
+                            </span>
+                              
                     </div>
                 </div>
             </div>    
