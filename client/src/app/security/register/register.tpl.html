@@ -1,0 +1,136 @@
+<div class="register-container">
+    <div class="container">  
+
+<div class="content">
+    <div class="panel" id="registerPanel">    
+            <h3>Sign Up</h3>
+            <form name="registerForm" ng-submit="register()" novalidate>
+            <div class="row">
+                <div class="form-group col-sm-6">
+                    <label for="firstName" class="sr-only"> First name </label>
+                    <div class="input-group">
+                        <div class="input-group-addon"><span class="glyphicon glyphicon-font"></span></div>
+                        <input type="text" class="form-control" id="firstName" name="firstName" ng-model="user.firstName" 
+                        placeholder="First name" 
+                        ng-pattern="/[A-Za-z0-9]*/" ng-minlength="3" ng-maxlength="20" ng-pattern="/[A-Za-z0-9]*/" required>
+                    </div>    
+                    <div class="error-container" ng-show="registerForm.firstName.$dirty && registerForm.firstName.$invalid">
+                            <span class="error" ng-show="registerForm.firstName.$error.required">
+                                Your first name is required
+                            </span>
+                            <span class="error" ng-show="registerForm.firstName.$error.minlength">
+                                First name must contain at least 3 characters
+                            </span>
+                            <span class="error" ng-show="registerForm.firstName.$error.maxlength">
+                                First name can not be longer than 20 characters
+                            </span>
+                    </div>
+                </div>
+                <div class="form-group col-sm-6">
+                    <label for="lastName" class="sr-only"> Last name </label>
+                    <div class="input-group">
+                        <div class="input-group-addon"><span class="glyphicon glyphicon-font"></span></div>
+                        <input type="text" class="form-control" id="lastName" name="lastName" ng-model="user.lastName" placeholder="Last name" 
+                        ng-pattern="/[A-Za-z0-9]*/" ng-minlength="3" ng-maxlength="20"  ng-pattern="/[A-Za-z0-9]*/" required>
+                    </div>    
+                    <div class="error-container" ng-show="registerForm.lastName.$dirty && registerForm.lastName.$invalid">
+                            <span class="error" ng-show="registerForm.lastName.$error.required">
+                                Your last name is required
+                            </span>
+                            <span class="error" ng-show="registerForm.lastName.$error.minlength">
+                                Last name must contain at least 3 characters
+                            </span>
+                            <span class="error" ng-show="registerForm.lastName.$error.maxlength">
+                                Last name can not be longer than 20 characters
+                            </span>
+                    </div>
+                </div>   
+            </div>    
+
+            <div class="row">
+                <div class="form-group col-sm-6">
+                    <label for="username" class="sr-only"> Username </label>
+                    <div class="input-group">
+                        <div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
+                        <input type="text" class="form-control" id="username" name="username" ng-model="user.username" placeholder="Userame" 
+                        ng-pattern="/[A-Za-z0-9]*/" ng-minlength="3" ng-maxlength="20" ensure-unique="username" required>
+                    </div>    
+                    <div class="error-container" ng-show="registerForm.username.$dirty && registerForm.username.$invalid">
+                            <span class="error" ng-show="registerForm.username.$error.required">
+                                Your username is required
+                            </span>
+                            <span class="error" ng-show="registerForm.username.$error.minlength">
+                                username must contain at least 3 characters
+                            </span>
+                            <span class="error" ng-show="registerForm.username.$error.maxlength">
+                                username can not be longer than 20 characters
+                            </span>
+                          <span class="error" ng-show="registerForm.username.$error.unique">
+                                That username is taken, please try another
+                            </span>                              
+                    </div>
+                </div>
+
+                <div class="form-group col-sm-6">
+                    <label for="email" class="sr-only"> Email </label>
+                    <div class="input-group">
+                        <div class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></div>
+                        <input type="email" class="form-control" id="email" name="email" ng-model="user.email" placeholder="Email Id" 
+                        ensure-unique="email" required>
+                    </div>    
+                    <div class="error-container" ng-show="registerForm.email.$dirty && registerForm.username.$invalid">
+                            <span class="error" ng-show="registerForm.email.$error.required">
+                                Your email id is required 
+                            </span>
+                            <span class="error" ng-show="registerForm.email.$error.email">
+                                Please enter a valid email id 
+                            </span>
+                            <span class="error" ng-show="registerForm.email.$error.unique">
+                                Email already in use, please try another
+                            </span>   
+                    </div>  
+                </div>
+            </div>    
+            <div class="row">
+                <div class="form-group col-sm-6">
+                    <label for="password" class="sr-only"> Password </label>
+                    <div class="input-group">
+                        <div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
+                        <input type="password" class="form-control" name="password" id="password" ng-model="user.password" 
+                        ng-minlength="6" placeholder="Password" required>
+                    </div>
+                    <div class="error-container" ng-show="registerForm.password.$dirty && registerForm.password.$invalid">
+                            <span class="error" ng-show="registerForm.password.$error.required">
+                                Please enter a password 
+                            </span>
+                            <span class="error" ng-show="registerForm.password.$error.minlength">
+                                Your password must contain at least 6 characters
+                            </span>
+                    </div>
+                    
+                </div>
+
+                <div class="form-group col-sm-6">
+                    <label for="confirmPassword" class="sr-only"> Confirm Password </label>
+                    <div class="input-group">
+                        <div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
+                        <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" ng-model="confirmPassword" 
+                        placeholder="Retype Password" required>
+                    </div>
+                    <div class="error-container" ng-show="registerForm.confirmPassword.$dirty && registerForm.confirmPassword.$invalid">
+                            <span class="error" ng-show="registerForm.confirmPassword.$error.required">
+                                Please confirm password 
+                            </span>
+                    </div>
+                </div>
+            </div>    
+                <button type="submit" class="btn btn-primary btn-lg btn-block" ng-disabled="registerForm.$invalid">Sign Up</button> 
+            </form>
+            <a class="panel-footer" ui-sref="welcome.login">
+                Already Registered?  &nbsp;<span> Sign in Here </span>
+            </a>    
+    </div>
+</div>    
+
+</div>
+</div>

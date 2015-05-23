@@ -1,0 +1,48 @@
+<html ng-app="todoApp">
+<head>
+    <!-- META -->
+    <meta charset="utf-8">
+    <meta name="fragment" content="!">
+    <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+
+    <title ng-bind="pageTitle"></title>
+
+    <!-- SCROLLS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet"><!-- load bootstrap -->
+    <link rel="stylesheet" href="src/assets/css/todoApp.css">
+</head>
+<!-- SET THE CONTROLLER AND GET ALL TODOS -->
+<body>
+
+    <div class="page-wrap">
+        <div ng-include="'src/app/common/header.tpl.html'" ng-controller="headerController"></div>
+        <div class="{{pageClass}}" ui-view="content"></div>
+    </div>
+    <div ng-include="'src/app/common/footer.tpl.html'"></div>
+
+    <script src="vendor/jquery/dist/jquery.min.js"></script>
+    <script src="vendor/angular/angular.min.js"></script>
+    <script src="vendor/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="vendor/angular-cookies/angular-cookies.min.js"></script>
+    <script src="vendor/ngstorage/ngStorage.min.js"></script>
+    <script src="vendor/angular-animate/angular-animate.min.js"></script>
+    <script src="vendor/angular-bootstrap/ui-bootstrap.min.js"></script>
+    <script src="vendor/angular-jwt/dist/angular-jwt.min.js"></script>
+    <script src="src/app/app.js"></script>
+    <script src="src/app/config.js"></script>   
+    <script src="src/app/todo/todo.js"></script>        
+    <script src="src/app/todo/todoController.js"></script>
+    <script src="src/app/todo/todoService.js"></script>
+    <script src="src/app/security/security.js"></script>
+    <script src="src/app/security/securityService.js"></script>
+    <script src="src/app/security/login/loginController.js"></script>
+    <script src="src/app/security/register/registerController.js"></script>  
+    <script src="src/app/common/headerController.js"></script> 
+    <script src="src/app/common/titleDirective.js"></script>  
+    <script src="src/app/profile/profile.js"></script>
+    <script src="src/app/profile/profileController.js"></script>
+    <script src="src/app/profile/profileService.js"></script>
+     
+</body>
+</html>

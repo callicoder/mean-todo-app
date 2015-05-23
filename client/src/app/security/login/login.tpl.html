@@ -1,0 +1,55 @@
+<div class="login-container">
+    <div class="container">    
+    <div class="content">
+         <div class="panel" id="loginPanel">
+            <h3>Sign in to Your Account</h3>
+            <div class="row">
+            <div class="col-sm-6">
+                <div class="social-login" style="padding: 25px 40px 15px 40px;">
+                    <button class="btn btn-block btn-lg btn-facebook">Sign in with facebook</button>
+                    <button class="btn btn-block btn-lg btn-google">Sign in with google</button> 
+                    <button class="btn btn-block btn-lg btn-twitter">Sign in with twitter</button>                       
+                </div>            
+            </div>
+            <div class="col-sm-6">
+            <form name="loginForm" ng-submit="login()" novalidate>
+                <div class="form-group">
+                    <label for="username" class="sr-only"> Username </label>
+                    <div class="input-group">
+                        <div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
+                        <input type="text" class="form-control" id="username" name="username" ng-model="user.username" placeholder="Username" required>
+                    </div>
+                    <div class="error-container" ng-show="loginForm.username.$dirty && loginForm.username.$invalid">
+                            <span class="error" ng-show="loginForm.username.$error.required">
+                                Your username is required
+                            </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password" class="sr-only"> Password </label>
+                    <div class="input-group">
+                        <div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
+                        <input type="password" class="form-control" id="password" name="password" ng-model="user.password" placeholder="Password" required>
+                    </div>
+                    <div class="error-container" ng-show="loginForm.password.$dirty && loginForm.password.$invalid">
+                            <span class="error" ng-show="loginForm.password.$error.required">
+                                Your password is required
+                            </span>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg btn-block" ng-disabled="loginForm.$invalid">Sign in</button>                
+            </form>    
+            </div>
+            </div> 
+            <div class="row">
+                <div class="col-xs-12">
+                    <a class="panel-footer" ui-sref="welcome.register">
+                        New user?  &nbsp;<span> Sign Up Here </span>
+                    </a>
+                </div>
+            </div>
+         </div>
+    </div>    
+    </div>
+</div>

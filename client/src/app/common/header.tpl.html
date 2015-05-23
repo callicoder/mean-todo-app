@@ -1,0 +1,29 @@
+	<header class="page-header">
+        <div class="container">
+            <a ui-sref="app.todo">
+                <h1 class="logo pull-left">
+                    <span class="T">T</span>
+                    <span class="O1">O</span>
+                    <span class="D">D</span>
+                    <span class="O2">O</span>
+                    &nbsp;
+                    <span class="A">A</span>
+                    <span class="P1">P</span>
+                    <span class="P2">P</span>
+                </h1>
+            </a>
+            <div class="actions pull-right">
+                <!-- Single button -->
+                <div class="btn-group profile-dropdown" dropdown ng-show="isAuthenticated()">
+                    <button type="button" class="btn btn-primary dropdown-toggle" style="font-size:17px;font-family: monospace;" dropdown-toggle>
+                    	Hi {{currentUser.username || 'Anonymous'}} <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a ui-sref="app.profile">Edit Profile</a></li>
+                        <li class="divider"></li>
+                        <li><a href="" ng-click="logout()">Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>  
+    </header>
