@@ -78,7 +78,7 @@
                         <input type="email" class="form-control" id="email" name="email" ng-model="user.email" placeholder="Email Id" 
                         ensure-unique="email" required>
                     </div>    
-                    <div class="error-container" ng-show="registerForm.email.$dirty && registerForm.username.$invalid">
+                    <div class="error-container" ng-show="registerForm.email.$dirty && registerForm.email.$invalid">
                             <span class="error" ng-show="registerForm.email.$error.required">
                                 Your email id is required 
                             </span>
@@ -128,7 +128,10 @@
                     </div>
                 </div>
             </div>    
-                <button type="submit" class="btn btn-primary btn-lg btn-block" ng-disabled="registerForm.$invalid">Sign Up</button> 
+                <button type="submit" class="btn btn-primary btn-lg btn-block" ng-disabled="registerForm.$invalid"
+                loading-button loading-value="Signing you up" loading-completed="isSuccess">
+                Sign Up
+                </button> 
             </form>
             <a class="panel-footer" ui-sref="welcome.login">
                 Already Registered?  &nbsp;<span> Sign in Here </span>

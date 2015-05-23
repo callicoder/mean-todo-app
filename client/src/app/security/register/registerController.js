@@ -3,15 +3,17 @@ angular.module('todoApp.security')
 	$scope.pageClass = 'page-register';
 
 	$scope.user = {};
+	$scope.isSuccess = false;
 	$scope.register = function() {
 		if($scope.registerForm.$invalid) {
 			return;
 		}
 		security.register($scope.user)
 		.success(function(data){
+			$scope.isSuccess = true;
 			$state.go('welcome.login');
 		}).error(function(data){
-
+			$scope.isSuccess = false;
 		}); 
 	};
 }])
