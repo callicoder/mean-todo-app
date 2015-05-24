@@ -1,5 +1,6 @@
 angular.module('todoApp')
-.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider) {
+.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', 'AccessLevels', 
+    function($stateProvider, $urlRouterProvider, $locationProvider, AccessLevels) {
 
 	$locationProvider.html5Mode(true);
 	
@@ -7,7 +8,7 @@ angular.module('todoApp')
     .state('welcome', {
         abstract: true,
         data: {
-            requireLogin: false,
+            access: AccessLevels.anon,
         }
     })
     .state('welcome.login', {
@@ -37,7 +38,7 @@ angular.module('todoApp')
     .state('app', {
         abstract: true,
         data: {
-            requireLogin: true
+            access: AccessLevels.user
         }
     })
     .state('app.todo', {
@@ -62,6 +63,31 @@ angular.module('todoApp')
         },
         data: {
             pageTitle: 'TodoApp Profile'
+        }
+    })
+    .state('app.users', {
+        url: '/users',
+        views: {
+            'content@': {
+                templateUrl: 'src/app/user/userList.tpl.html',
+                controller: 'userListController'
+            }
+        },
+        data: {
+            pageTitle: 'TodoApp Manage Users',
+            access: AccessLevels.admin
+        }
+    })
+    .state('app.users.userDetail', {
+        url: '/users/userDetail',
+        views: {
+            'content@': {
+                templateUrl: 'src/app/users/userDetail.tpl.html',
+                controller: 'userDetailController'
+            }
+        },
+        data: {
+            pageTitle: 'TodoApp User Detail'
         }
     });
 }])

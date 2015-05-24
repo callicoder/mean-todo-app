@@ -1,5 +1,6 @@
 angular.module('todoApp.security')
-.factory('security', ['$http', '$cookieStore', '$localStorage', 'jwtHelper', function($http, $cookieStore, $localStorage, jwtHelper) {
+.factory('security', ['$http', '$cookieStore', '$localStorage', 'jwtHelper', 'AccessLevels', 
+	function($http, $cookieStore, $localStorage, jwtHelper, AccessLevels) {
 
 	function getUserFromToken(token) {
 		var tokenPayload = jwtHelper.decodeToken(token);
@@ -26,6 +27,14 @@ angular.module('todoApp.security')
 		logout: function() {
 			delete $localStorage.access_token;
 			service.currentUser = null;
+		},
+
+		isAuthorized: function(access) {
+			if(access == AccessLevels.anon) {
+				return true;
+			} else {
+				return service.isAuthenticated() && (service.currentUser.roles.indexOf('admin') != -1 || service.currentUser.roles.indexOf(access) != -1);
+			}
 		},
 
 		isAuthenticated: function() {

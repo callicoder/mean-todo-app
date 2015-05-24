@@ -42,7 +42,7 @@ exports.requiresAdmin = function(req, res, next) {
         		return res.json({ success: false, message: 'Failed to authenticate token.' });    
       		} else {
         		// Check if user is an administrator
-        		if(decoded.roles.indexof('admin') == -1) {
+        		if(decoded.roles.indexOf('admin') == -1) {
         			return res.status(401).send({
         				success: false,
         				message: 'Not Authorized'

@@ -1,0 +1,26 @@
+<div class="page-container" style="margin-bottom:40px;">
+	<div class="container">
+		<h3 class="title" style="color: #286090;margin: 20px 0 30px 0;font-family: monospace;">Manage Users</h3>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Username</th>
+					<th>Email</th>
+					<td></td>
+				</tr>
+			</thead>	
+			<tbody>
+				<tr ng-repeat="user in users">
+					<td>{{user.displayName}}</td>
+					<td>{{user.username}}</td>
+					<td>{{user.email}}</td>	
+					<td><i style="cursor:pointer;color:red;font-size:20px;" 
+							class="glyphicon glyphicon-remove-circle" ng-click="deleteUser(user._id)">
+						</i>
+					</td>				
+				</tr>
+			</tbody>
+		</table>
+	</div>	
+</div>

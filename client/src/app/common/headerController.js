@@ -1,7 +1,7 @@
 angular.module('todoApp')
 .controller('headerController', ['$scope', 'security', '$state', function($scope, security, $state) {
 	$scope.isAuthenticated = security.isAuthenticated;
-
+	$scope.isAuthorized = security.isAuthorized;
 	$scope.$watch(function() {
 		return security.currentUser;
 	}, function(currentUser) {

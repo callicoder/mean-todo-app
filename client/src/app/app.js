@@ -6,12 +6,20 @@ angular.module('todoApp', ['ui.router',
                             'angular-jwt', 
                             'todoApp.todo', 
                             'todoApp.security', 
-                            'todoApp.profile'
+                            'todoApp.profile',
+                            'todoApp.user'
                         ]
             );
 
 angular.module('todoApp')
-.run(['$rootScope', '$state', 'security', function($rootScope, $state, security) {
+.constant("AccessLevels", {
+    anon: "anon",
+    user: "user",
+    admin: "admin"
+});
+
+angular.module('todoApp')
+.run(['$rootScope', '$state', 'security', 'AccessLevels', function($rootScope, $state, security, AccessLevels) {
 
     security.requestCurrentUser();
 
@@ -24,9 +32,9 @@ angular.module('todoApp')
 
     $rootScope.$on('$stateChangeStart', function (event, toState, toParams) {
   
-        var requireLogin = toState.data.requireLogin;
+        var access = toState.data.access;
 
-        if(requireLogin && !security.isAuthenticated()) {
+        if(!security.isAuthorized(access)) {
         	event.preventDefault();
         	$state.go('welcome.login');
         } 

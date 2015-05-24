@@ -50,9 +50,7 @@ exports.delete = function(req, res) {
 					res.send(err);
 				}
 
-				User.findOne({
-					_id: req.params.userId
-				}, function(err, user) {
+				User.find({}, function(err, user) {
 					if(err) {
 						res.send(err);
 					}

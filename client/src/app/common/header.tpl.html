@@ -21,6 +21,8 @@
                     <ul class="dropdown-menu" role="menu">
                         <li><a ui-sref="app.profile">Edit Profile</a></li>
                         <li class="divider"></li>
+                        <li ng-show="isAuthorized('admin')"><a ui-sref="app.users">Manage users</a></li>
+                        <li ng-show="isAuthorized('admin')" class="divider"></li>
                         <li><a href="" ng-click="logout()">Logout</a></li>
                     </ul>
                 </div>
