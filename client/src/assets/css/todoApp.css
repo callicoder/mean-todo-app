@@ -16,11 +16,11 @@
         }
 
         .login-container {
-            background-color: rgb(97, 208, 141);
+            background:url('../img/bg1.jpg')
         }
 
          .register-container {
-            background-color: rgb(114, 139, 192);
+            background:url('../img/bg1.jpg')
          }
 
         .page-footer {
