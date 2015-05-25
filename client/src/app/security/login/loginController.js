@@ -4,7 +4,7 @@ angular.module('todoApp.security')
 	$scope.pageClass = 'page-login';
 	
 	$scope.user = {};
-
+	$scope.isSuccess = false;
 	$scope.login = function() {
 		if($scope.loginForm.$invalid) {
 			return;
@@ -12,9 +12,13 @@ angular.module('todoApp.security')
 
 		security.login($scope.user)
 		.success(function(data){
+			$scope.isSuccess = true;
 			if(data.success) {
 				$state.go('app.todo');
 			}
-		})
+		}).error(function(data){
+			$scope.isSuccess = false;
+			console.log(data);
+		});
 	};
 }]);

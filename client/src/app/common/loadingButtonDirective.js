@@ -2,9 +2,6 @@ angular.module('todoApp')
 .directive('loadingButton', ['$timeout', function($timeout){
 	return {
 		restrict: 'A',
-		scope: {
-			completed: "=loadingCompleted"
-		},
 		link: function(scope, element, attrs) {
 			var started = false;
 			var initialText = element.text();
@@ -13,7 +10,10 @@ angular.module('todoApp')
 				started = true;
 				element.removeClass('success error');
 				element.addClass('loading');
-				element.text(attrs.loadingValue);
+				$timeout(function(){
+    				element.attr('disabled',true);
+				}, 0);
+				element.html(attrs.loadingValue + " &nbsp; <img src='src/assets/img/loading.gif'>");
 			};
 
 			element.bind('click', function(e){
@@ -23,16 +23,18 @@ angular.module('todoApp')
 			});
 
 			var done = function(success) {
+				started = false;
 				element.removeClass('loading');
+				element.html(initialText);
 				if(success) {
 					element.addClass('success');
 				} else {
 					element.addClass('error');
-					element.text(initialText);
 				}	
 			};
 
-			scope.$watch('completed', function(success){
+			scope.$watch(attrs.loadingCompleted, function(success){
+				console.log(success);
 				done(success);
 			});
 		}
