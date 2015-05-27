@@ -1,3 +1,4 @@
+
 angular.module('todoApp.profile')
 .controller('profileController', ['$scope', 'profile', function($scope, profile) {
 	

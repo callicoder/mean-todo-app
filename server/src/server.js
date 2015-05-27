@@ -33,5 +33,5 @@ require('./app/routes/user.server.routes')(app);
 require('./app/routes/core.server.routes')(app);
 
 // listen (start app with node server.js) ===================
-app.listen(9090);
-console.log('app listening on port 9090');
+app.listen(3000);
+console.log('app listening on port 3000');

@@ -26,6 +26,7 @@ angular.module('todoApp')
 				started = false;
 				element.removeClass('loading');
 				element.html(initialText);
+				element.attr('disabled', false);
 				if(success) {
 					element.addClass('success');
 				} else {
@@ -34,7 +35,6 @@ angular.module('todoApp')
 			};
 
 			scope.$watch(attrs.loadingCompleted, function(success){
-				console.log(success);
 				done(success);
 			});
 		}

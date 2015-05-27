@@ -19,7 +19,7 @@ angular.module('todoApp')
 });
 
 angular.module('todoApp')
-.run(['$rootScope', '$state', 'security', 'AccessLevels', function($rootScope, $state, security, AccessLevels) {
+.run(['$rootScope', '$state', 'security', 'AccessLevels', '$location', '$window', function($rootScope, $state, security, AccessLevels, $location, $window) {
 
     security.requestCurrentUser();
 
@@ -45,4 +45,14 @@ angular.module('todoApp')
         }
     });
 
+    $window.ga('create', 'UA-63408310-1', {
+        'cookieDomain': 'none'
+    });
+
+    $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
+        $window.ga('send', 'pageview', {
+            page: $location.path(),
+            title: toState.data.pageTitle
+        });
+    });
 }]);
