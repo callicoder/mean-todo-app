@@ -6,11 +6,8 @@ var config = require('../../config');
 
 exports.findAll = function(req, res) {
 
-		User.find(function(err, users){
-			if(err) {
-				res.send(err);
-			}
-
+		User.find({}, 'email', function(err, users){
+			console.log(users);
 			res.json(users);
 		});
 };

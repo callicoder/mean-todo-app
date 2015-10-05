@@ -10,12 +10,12 @@ var methodOverride = require('method-override'); // simulate DELETE and PUT (exp
 var path = require('path');
 
 // Configuration ==============================
-
+var port = process.env.PORT || 3000;
 var config = require('./config');
 mongoose.connect(config.dbUrl);     // connect to mongoDB database on modulus.io
 
 app.use(express.static(path.join(__dirname, "../../client")));  // set the static files location /public/img will be /img for users
-app.use(morgan('dev'));                                         // log every request to the console
+app.use(morgan('combined'));                                         // log every request to the console
 app.use(bodyParser.urlencoded({'extended':'true'}));            // parse application/x-www-form-urlencoded
 app.use(bodyParser.json());                                     // parse application/json
 app.use(bodyParser.json({ type: 'application/vnd.api+json' })); // parse application/vnd.api+json as json
@@ -33,5 +33,5 @@ require('./app/routes/user.server.routes')(app);
 require('./app/routes/core.server.routes')(app);
 
 // listen (start app with node server.js) ===================
-app.listen(3000);
-console.log('app listening on port 3000');
+app.listen(port);
+console.log('app listening on port ' + port);

@@ -12,7 +12,7 @@ var validateUniqueEmail = function(value, callback) {
 		}
 		callback(!count);
 	});
-}
+};
 
 var UserSchema = new Schema({
 	firstName: {
