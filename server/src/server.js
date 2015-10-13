@@ -10,7 +10,7 @@ var methodOverride = require('method-override'); // simulate DELETE and PUT (exp
 var path = require('path');
 
 // Configuration ==============================
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 80;
 var config = require('./config');
 mongoose.connect(config.dbUrl);     // connect to mongoDB database on modulus.io
 
